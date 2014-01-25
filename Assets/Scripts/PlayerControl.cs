@@ -14,7 +14,7 @@ public class PlayerControl : MonoBehaviour {
 	//Falling Setup, check for ground etc
 	bool grounded = false;
 	public Transform groundCheck;
-	float groundRadius = 1f;
+	float groundRadius = .1f;
 	public LayerMask whatIsGround;
 
 	// Use this for initialization
@@ -22,11 +22,6 @@ public class PlayerControl : MonoBehaviour {
 		anim = GetComponent<Animator>();
 	}
 
-    void LateUpdate()
-    {
-        //Vector2 gravityForce = Vector2.up * gravity * Time.deltaTime * 1000f;
-        //rigidbody2D.AddForce(gravityForce);
-    }
 
 	// Update is called once per frame
 	void FixedUpdate () 
@@ -34,9 +29,11 @@ public class PlayerControl : MonoBehaviour {
 		//Check for grounding
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 		anim.SetBool("Ground", grounded);
-		anim.SetFloat ("vSpeed", rigidbody2D.velocity.y);
 
         UpdateMovement();
+        anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
+
+        anim.SetFloat("Speed", Mathf.Abs(rigidbody2D.velocity.x));
 
         //Jumping
         if (grounded && Input.GetKeyDown(KeyCode.Space))
@@ -73,7 +70,7 @@ public class PlayerControl : MonoBehaviour {
         }
         else
         {
-            FaceDirection(direction);
+            FaceDirection(Mathf.Sign(Input.GetAxis("Horizontal")));
         }
 
         if (Mathf.Abs(velocity.x) > maxVelocity)
@@ -97,6 +94,7 @@ public class PlayerControl : MonoBehaviour {
 	{
         if (direction != 0)
         {
+            Debug.Log("here");
             Vector3 theScale = transform.localScale;
             theScale.x = Mathf.Abs(theScale.x) * direction;
             transform.localScale = theScale;
