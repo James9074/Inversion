@@ -1,0 +1,4 @@
+*.meta
+Temp/UnityLockfile
+*/obj/*
+*/bin/*
