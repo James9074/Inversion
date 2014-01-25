@@ -44,6 +44,7 @@ public class PlayerControl : MonoBehaviour {
 		//Jumping
 		if (grounded && Input.GetKeyDown(KeyCode.Space)){
 			anim.SetBool ("Ground",false);
+			//Debug.Log(Current.getCurrentItem());
 			rigidbody2D.AddForce(new Vector2(0, jumpForce));
 		}
 

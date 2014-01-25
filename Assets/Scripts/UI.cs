@@ -10,7 +10,7 @@ public class UI : MonoBehaviour {
 
 	void OnGUI () {
 		
-		selGridInt = GUILayout.SelectionGrid(new Rect(Screen.width/2 - 450, Screen.height/8, 900, 64), selGridInt, selStrings, 9);
+		selGridInt = GUI.SelectionGrid(new Rect(Screen.width/2 - 450, Screen.height/8, 900, 64), selGridInt, selStrings, 11);
 
 		}
 }
