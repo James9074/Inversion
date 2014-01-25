@@ -55,8 +55,7 @@ public class PlayerControl : MonoBehaviour {
     {
         Vector2 velocity = rigidbody2D.velocity;
         float direction = Mathf.Sign(velocity.x);
-        
-        
+
         if (Input.GetAxis("Horizontal") == 0)
         {
             if (Mathf.Abs(velocity.x) > .0001f)
@@ -71,6 +70,10 @@ public class PlayerControl : MonoBehaviour {
                 velocity.x = 0;
                 rigidbody2D.velocity = velocity;
             }
+        }
+        else
+        {
+            FaceDirection(direction);
         }
 
         if (Mathf.Abs(velocity.x) > maxVelocity)
@@ -90,12 +93,14 @@ public class PlayerControl : MonoBehaviour {
     }
 
 
-	void Flip()
+	void FaceDirection(float direction)
 	{
-		facingRight = !facingRight;
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
+        if (direction != 0)
+        {
+            Vector3 theScale = transform.localScale;
+            theScale.x = Mathf.Abs(theScale.x) * direction;
+            transform.localScale = theScale;
+        }
 	}
 
 	public void kill(){
