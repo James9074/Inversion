@@ -5,13 +5,17 @@ public class UI : MonoBehaviour {
 //IGNORE THIS FOR NOW! I SWEAR I WILL USE A BEARABLE (hehe bear) SYSTEM SOON!
 	// Use this for initialization
 
-	public int selGridInt = 0;
-	public string[] selStrings = new string[] {"Empty", "Windbreaker", "Umbrella", "Sunglasses", "Gasmask", "Diet Soda", "Armor", "Flashlight", "Hard Hat", "Heels", "Spacesuit"};
-
+	public static int selGridInt = 0;
+	public string[] selStrings = new string[] {"Empty", "Windbreaker", "Umbrella", "Sunglasses", "Diet Soda",  "Hard Hat", "Heels", "Spacesuit"};
+	private int gridXPos = Screen.width/2 - 350; 
+	private int gridYPos = Screen.height/8 -50; 
+	private int gridXSize = 800;
+	private int gridYSize = 30;
 	void OnGUI () {
-		
-		selGridInt = GUI.SelectionGrid(new Rect(Screen.width/2 - 450, Screen.height/8, 900, 64), selGridInt, selStrings, 11);
-
+		//Item equiped to recieved, checked for GUI changes, and is set again.
+		selGridInt = Player.itemEquiped;
+		selGridInt = GUI.SelectionGrid(new Rect(gridXPos, gridYPos, gridXSize, gridYSize), selGridInt, selStrings, 09);
+		Player.itemEquiped = selGridInt;
 		}
 }
  

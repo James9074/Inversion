@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour {
 	private bool facingRight = true;
     private const float jumpForce = .15f;
 
-    private const float maxVelocity = 20;
+	private const float maxVelocity = 20;
 	Animator anim;
 
 	//Falling Setup, check for ground etc
