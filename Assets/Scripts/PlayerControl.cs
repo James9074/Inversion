@@ -2,12 +2,13 @@
 using System.Collections;
 
 public class PlayerControl : MonoBehaviour {
-	public float playerSpeed = 100;
-	public float maxSpeed = 50;
+	private const float acceleration = 10f;
+    private const float drag = .25f;
+    private const float gravity = -1f;
 	private bool facingRight = true;
-	public float jumpForce = 1500f;
-	private float maxVelocitySquared = 2500;
-	private float velocityCap = 50;
+    private const float jumpForce = .15f;
+
+    private const float maxVelocity = 20;
 	Animator anim;
 
 	//Falling Setup, check for ground etc
@@ -21,52 +22,76 @@ public class PlayerControl : MonoBehaviour {
 		anim = GetComponent<Animator>();
 	}
 
-
+    void LateUpdate()
+    {
+        //Vector2 gravityForce = Vector2.up * gravity * Time.deltaTime * 1000f;
+        //rigidbody2D.AddForce(gravityForce);
+    }
 
 	// Update is called once per frame
-	void FixedUpdate () {
-
-
+	void FixedUpdate () 
+    {
 		//Check for grounding
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 		anim.SetBool("Ground", grounded);
 		anim.SetFloat ("vSpeed", rigidbody2D.velocity.y);
 
+        UpdateMovement();
 
-		//Horizontal Movement
-		float horizontalMovement = Input.GetAxis("Horizontal");
-		anim.SetFloat("Speed", Mathf.Abs (horizontalMovement));
-		//rigidbody2D.velocity = new Vector2(horizontalMovement * maxSpeed, rigidbody2D.velocity.y);
-		rigidbody2D.AddForce(new Vector2(horizontalMovement*playerSpeed, 0));
+        //Jumping
+        if (grounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            anim.SetBool("Ground", false);
+            //Debug.Log(Current.getCurrentItem());
+            rigidbody2D.AddForce(new Vector2(0, jumpForce));
+        }
 
-		if (rigidbody2D.velocity.sqrMagnitude > maxVelocitySquared){
-			Debug.Log(rigidbody2D.velocity.sqrMagnitude);
-			Vector2 newVelocity = rigidbody2D.velocity;
-			newVelocity.Normalize();
-			newVelocity *= velocityCap;
-
-			rigidbody2D.velocity = newVelocity;
-		}
-		if(horizontalMovement > 0 && !facingRight)
-			Flip();
-		else if (horizontalMovement < 0 && facingRight)
-			Flip();
+        //Add generic death conditions here
 
 
 	}
 
-	void Update(){
-		//Jumping
-		if (grounded && Input.GetKeyDown(KeyCode.Space)){
-			anim.SetBool ("Ground",false);
-			//Debug.Log(Current.getCurrentItem());
-			rigidbody2D.AddForce(new Vector2(0, jumpForce));
-		}
+    void UpdateMovement()
+    {
+        Vector2 velocity = rigidbody2D.velocity;
+        float direction = Mathf.Sign(velocity.x);
+        
+        /*
+        if (Input.GetAxis("Horizontal") == 0)
+        {
+            if (Mathf.Abs(velocity.x) > .0001f)
+            {
+                Debug.Log("Slowing");
+                velocity.x = velocity.x * drag;
+                rigidbody2D.velocity = velocity;
+            }
+            else
+            {
+                Debug.Log("Stopped");
+                velocity.x = 0;
+                //rigidbody2D.velocity = velocity;
+            }
+        }
 
-		//Add generic death conditions here
+        if (Mathf.Abs(velocity.x) > maxVelocity)
+        {
+            velocity.x = direction * maxVelocity;
+            rigidbody2D.velocity = velocity;
+        }
+        else
+        {
+            float horizontalMovement = Input.GetAxis("Horizontal");
+            Vector2 force = Vector2.right * horizontalMovement * acceleration * Time.deltaTime * 1000f;
+            Debug.Log(force.x);
+            rigidbody2D.AddForce(force);
+        }
+        */
 
+        velocity.x = Input.GetAxis("Horizontal") * maxVelocity;
+        rigidbody2D.velocity = velocity;
+        Debug.Log(rigidbody2D.velocity);
+    }
 
-	}
 
 	void Flip()
 	{
