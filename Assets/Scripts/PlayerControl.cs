@@ -6,7 +6,7 @@ public class PlayerControl : MonoBehaviour {
     private const float drag = .25f;
     private const float gravity = -1f;
 	private bool facingRight = true;
-    private const float jumpForce = .15f;
+    private const float jumpForce = 1500f;
 
 	private const float maxVelocity = 20;
 	Animator anim;
@@ -56,7 +56,7 @@ public class PlayerControl : MonoBehaviour {
         Vector2 velocity = rigidbody2D.velocity;
         float direction = Mathf.Sign(velocity.x);
         
-        /*
+        
         if (Input.GetAxis("Horizontal") == 0)
         {
             if (Mathf.Abs(velocity.x) > .0001f)
@@ -69,7 +69,7 @@ public class PlayerControl : MonoBehaviour {
             {
                 Debug.Log("Stopped");
                 velocity.x = 0;
-                //rigidbody2D.velocity = velocity;
+                rigidbody2D.velocity = velocity;
             }
         }
 
@@ -85,11 +85,8 @@ public class PlayerControl : MonoBehaviour {
             Debug.Log(force.x);
             rigidbody2D.AddForce(force);
         }
-        */
 
-        velocity.x = Input.GetAxis("Horizontal") * maxVelocity;
         rigidbody2D.velocity = velocity;
-        Debug.Log(rigidbody2D.velocity);
     }
 
 
