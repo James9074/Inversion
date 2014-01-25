@@ -2,8 +2,8 @@
 -target:library
 -nowarn:0169
 -out:Temp/Assembly-CSharp.dll
--r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll"
--r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll"
+-r:F:/Dev/Editor/Data/Managed/UnityEngine.dll
+-r:F:/Dev/Editor/Data/Managed/UnityEditor.dll
 -define:UNITY_STANDALONE_WIN
 -define:ENABLE_MICROPHONE
 -define:ENABLE_TEXTUREID_MAP
@@ -36,6 +36,9 @@
 -define:ENABLE_PROFILER
 -define:UNITY_EDITOR
 -define:UNITY_EDITOR_WIN
+Assets/Scripts/Camera.cs
 Assets/Scripts/Items.cs
--r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Runtime.Serialization.dll"
--r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Xml.Linq.dll"
+Assets/Scripts/LoadLevels/t1.cs
+Assets/Scripts/PlayerControl.cs
+-r:F:/Dev/Editor/Data/Mono\lib/mono/unity\System.Runtime.Serialization.dll
+-r:F:/Dev/Editor/Data/Mono\lib/mono/unity\System.Xml.Linq.dll
