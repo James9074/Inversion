@@ -13,9 +13,9 @@ public class UI : MonoBehaviour {
 	private int gridYSize = 30;
 	void OnGUI () {
 		//Item equiped to recieved, checked for GUI changes, and is set again.
-		selGridInt = Player.itemEquiped;
+		selGridInt = (int) Player.itemEquiped;
 		selGridInt = GUI.SelectionGrid(new Rect(gridXPos, gridYPos, gridXSize, gridYSize), selGridInt, selStrings, 09);
-		Player.itemEquiped = selGridInt;
+        Player.itemEquiped = (Items) selGridInt;
 		}
 }
  

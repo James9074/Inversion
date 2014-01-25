@@ -32,14 +32,12 @@ public class PlayerControl : MonoBehaviour {
 
         UpdateMovement();
         anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
-
         anim.SetFloat("Speed", Mathf.Abs(rigidbody2D.velocity.x));
 
         //Jumping
         if (grounded && Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetBool("Ground", false);
-            //Debug.Log(Current.getCurrentItem());
             rigidbody2D.AddForce(new Vector2(0, jumpForce));
         }
 
@@ -57,13 +55,11 @@ public class PlayerControl : MonoBehaviour {
         {
             if (Mathf.Abs(velocity.x) > .0001f)
             {
-                Debug.Log("Slowing");
                 velocity.x = velocity.x * drag;
                 rigidbody2D.velocity = velocity;
             }
             else
             {
-                Debug.Log("Stopped");
                 velocity.x = 0;
                 rigidbody2D.velocity = velocity;
             }
@@ -82,7 +78,6 @@ public class PlayerControl : MonoBehaviour {
         {
             float horizontalMovement = Input.GetAxis("Horizontal");
             Vector2 force = Vector2.right * horizontalMovement * acceleration * Time.deltaTime * 1000f;
-            Debug.Log(force.x);
             rigidbody2D.AddForce(force);
         }
 
@@ -94,14 +89,10 @@ public class PlayerControl : MonoBehaviour {
 	{
         if (direction != 0)
         {
-            Debug.Log("here");
             Vector3 theScale = transform.localScale;
             theScale.x = Mathf.Abs(theScale.x) * direction;
             transform.localScale = theScale;
         }
 	}
 
-	public void kill(){
-		Application.LoadLevel(Application.loadedLevel);
-		}
 }
