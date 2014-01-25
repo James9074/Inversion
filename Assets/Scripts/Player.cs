@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 	
-	public static int itemEquiped = 0;
+	public static Items itemEquiped = 0;
 	// Use this for initialization
 	void Start () {
 
@@ -13,4 +13,22 @@ public class Player : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void Kill()
+    {
+        Application.LoadLevel(Application.loadedLevel);
+    }
 }
+
+public enum Items
+{
+    Empty,
+    Windbreaker,
+    Umbrella,
+    Sunglasses,
+    DietSoda,
+    HardHat,
+    Heels,
+    Spacesuit
+};
+
