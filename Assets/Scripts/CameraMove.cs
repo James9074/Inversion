@@ -13,4 +13,8 @@ public class CameraMove : MonoBehaviour {
 	void Update () {
 	
 	}
+	void OnTriggerEnter (Collider other ) {
+		Destroy(other.gameObject);
+		Debug.Log("die");
+	}
 }

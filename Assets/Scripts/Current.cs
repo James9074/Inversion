@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum item  
+public enum Item  
 {
     Sunglasses= 4,
     Heels=1,
@@ -9,14 +9,7 @@ public enum item
     DietSoda=3
 }
 
-public class Current : MonoBehaviour
+public static class Current
 {
-	public string currentItem = "None";
-    public void setCurrentItem(string itemName){
-		currentItem = itemName;
-	}
-
-	public string getCurrentItem(){
-		return currentItem;
-	}
+	public static Item item;
 }

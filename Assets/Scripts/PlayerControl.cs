@@ -2,9 +2,12 @@
 using System.Collections;
 
 public class PlayerControl : MonoBehaviour {
-	public float maxSpeed = 25;
+	public float playerSpeed = 100;
+	public float maxSpeed = 50;
 	private bool facingRight = true;
 	public float jumpForce = 1500f;
+	private float maxVelocitySquared = 2500;
+	private float velocityCap = 50;
 	Animator anim;
 
 	//Falling Setup, check for ground etc
@@ -33,11 +36,23 @@ public class PlayerControl : MonoBehaviour {
 		//Horizontal Movement
 		float horizontalMovement = Input.GetAxis("Horizontal");
 		anim.SetFloat("Speed", Mathf.Abs (horizontalMovement));
-		rigidbody2D.velocity = new Vector2(horizontalMovement * maxSpeed, rigidbody2D.velocity.y);
+		//rigidbody2D.velocity = new Vector2(horizontalMovement * maxSpeed, rigidbody2D.velocity.y);
+		rigidbody2D.AddForce(new Vector2(horizontalMovement*playerSpeed, 0));
+
+		if (rigidbody2D.velocity.sqrMagnitude > maxVelocitySquared){
+			Debug.Log(rigidbody2D.velocity.sqrMagnitude);
+			Vector2 newVelocity = rigidbody2D.velocity;
+			newVelocity.Normalize();
+			newVelocity *= velocityCap;
+
+			rigidbody2D.velocity = newVelocity;
+		}
 		if(horizontalMovement > 0 && !facingRight)
 			Flip();
 		else if (horizontalMovement < 0 && facingRight)
 			Flip();
+
+
 	}
 
 	void Update(){
