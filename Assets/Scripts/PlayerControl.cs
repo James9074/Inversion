@@ -9,7 +9,7 @@ public class PlayerControl : MonoBehaviour {
     private const float jumpForce = 1500f;
 
 	private const float maxVelocity = 20;
-	Animator anim;
+	public Animator anim;
 
 	//Falling Setup, check for ground etc
 	bool grounded = false;
@@ -17,7 +17,7 @@ public class PlayerControl : MonoBehaviour {
 	float groundRadius = .1f;
 	public LayerMask whatIsGround;
 
-	// Use this for initialization
+	// Use this for initialization, init the animator to send animation change events
 	void Start () {
 		anim = GetComponent<Animator>();
 	}
@@ -27,6 +27,8 @@ public class PlayerControl : MonoBehaviour {
 	void FixedUpdate () 
     {
 		//Check for grounding
+
+		anim.SetInteger("Item", (int) Player.itemEquiped);
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 		anim.SetBool("Ground", grounded);
 

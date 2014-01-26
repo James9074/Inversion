@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\CameraMove.cs" />
      <Compile Include="Assets\Scripts\Current.cs" />
      <Compile Include="Assets\Scripts\LoadLevels\A1.cs" />
+     <Compile Include="Assets\Scripts\Obsticles\Fire.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
      <Compile Include="Assets\Scripts\UI.cs" />
