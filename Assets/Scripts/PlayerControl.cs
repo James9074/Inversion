@@ -5,8 +5,8 @@ public class PlayerControl : MonoBehaviour {
 	private const float acceleration = 10f;
     private const float drag = .25f;
     private const float gravity = -1f;
-	private bool facingRight = true;
     private const float jumpForce = 1500f;
+    private float maxVelocityScale = 1f;
 
 	private const float maxVelocity = 20;
 	public Animator anim;
@@ -22,6 +22,10 @@ public class PlayerControl : MonoBehaviour {
 		anim = GetComponent<Animator>();
 	}
 
+    void Update()
+    {
+        maxVelocityScale = (Player.itemEquiped == Items.Windbreaker) ? 2f : 1f;
+    }
 
 	// Update is called once per frame
 	void FixedUpdate () 
@@ -71,9 +75,9 @@ public class PlayerControl : MonoBehaviour {
             FaceDirection(Mathf.Sign(Input.GetAxis("Horizontal")));
         }
 
-        if (Mathf.Abs(velocity.x) > maxVelocity)
+        if (Mathf.Abs(velocity.x) > maxVelocity * maxVelocityScale)
         {
-            velocity.x = direction * maxVelocity;
+            velocity.x = direction * maxVelocity * maxVelocityScale;
             rigidbody2D.velocity = velocity;
         }
         else
