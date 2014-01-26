@@ -13,7 +13,7 @@ public class Fire : MonoBehaviour
 	void Start () 
     {
         isDeadly = true;
-        rainArea = GameObject.Find("RainArea").collider2D as BoxCollider2D;
+        rainArea = GameObject.Find("EffectArea").collider2D as BoxCollider2D;
 	}
 	
 	// Update is called once per frame

@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>F:/Dev/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>F:/Dev/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -50,8 +50,13 @@
      <Compile Include="Assets\Scripts\Camera.cs" />
      <Compile Include="Assets\Scripts\CameraMove.cs" />
      <Compile Include="Assets\Scripts\Current.cs" />
+     <Compile Include="Assets\Scripts\FragilePlatform.cs" />
      <Compile Include="Assets\Scripts\LoadLevels\A1.cs" />
      <Compile Include="Assets\Scripts\Obsticles\Fire.cs" />
+<<<<<<< HEAD
+=======
+     <Compile Include="Assets\Scripts\Platform.cs" />
+>>>>>>> 48871a2f8fe2348fb799c1db4a21565149266756
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
      <Compile Include="Assets\Scripts\UI.cs" />
