@@ -39,30 +39,33 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>F:/Dev/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>F:/Dev/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BoulderCreator.cs" />
      <Compile Include="Assets\Scripts\Breakable.cs" />
+<<<<<<< HEAD
+=======
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\Button.cs" />
+>>>>>>> cc9406883a3a9a448799c076dd89f5097447e202
      <Compile Include="Assets\Scripts\Camera.cs" />
      <Compile Include="Assets\Scripts\CameraMove.cs" />
      <Compile Include="Assets\Scripts\Current.cs" />
      <Compile Include="Assets\Scripts\Darkness.cs" />
      <Compile Include="Assets\Scripts\DeathArea.cs" />
      <Compile Include="Assets\Scripts\FragilePlatform.cs" />
-     <Compile Include="Assets\Scripts\Gate.cs" />
      <Compile Include="Assets\Scripts\ItemPickup.cs" />
      <Compile Include="Assets\Scripts\LoadLevels\A1.cs" />
      <Compile Include="Assets\Scripts\Obsticles\Fire.cs" />
      <Compile Include="Assets\Scripts\Platform.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
+     <Compile Include="Assets\Scripts\Poof.cs" />
      <Compile Include="Assets\Scripts\RainArea.cs" />
      <Compile Include="Assets\Scripts\RainDrop.cs" />
      <Compile Include="Assets\Scripts\ShoeHandler.cs" />

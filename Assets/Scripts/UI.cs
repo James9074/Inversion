@@ -21,6 +21,7 @@ public class UI : MonoBehaviour {
 		selGridInt = GUI.SelectionGrid(new Rect(gridXPos, gridYPos, gridXSize, gridYSize), selGridInt, selImages.Take(Player.itemsUnlocked.Count+1).ToArray(), 8);
 		if(selGridInt != (int)Player.itemEquiped){
 			Player.itemEquiped = (Items) selGridInt;
+			Player.newItem = true;
 		}
 		Player.itemEquiped = (Items) selGridInt;
 
