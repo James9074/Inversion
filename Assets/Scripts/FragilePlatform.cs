@@ -24,7 +24,18 @@ public class FragilePlatform : MonoBehaviour
         Debug.Log(collision.gameObject.name);
         if (collision.gameObject.name == "Player")
         {
-            Debug.Log("hre");
+            if (Player.itemEquiped == Items.DietSoda)
+            {
+                Break();
+            }
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject.name);
+        if (collision.gameObject.name == "Player")
+        {
             if (Player.itemEquiped == Items.DietSoda)
             {
                 Break();
@@ -35,6 +46,7 @@ public class FragilePlatform : MonoBehaviour
     private void Break()
     {
         isBreaking = true;
+        GetComponent<Animator>().SetTrigger("Break");
 
         foreach (var collider in this.GetComponents<Collider2D>())
         {
