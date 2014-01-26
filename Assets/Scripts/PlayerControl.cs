@@ -15,7 +15,7 @@ public class PlayerControl : MonoBehaviour {
 	//Falling Setup, check for ground etc
 	bool grounded = false;
 	public Transform groundCheck;
-	float groundRadius = .1f;
+	float groundRadius = .5f;
 	public LayerMask whatIsGround;
 
 	// Use this for initialization, init the animator to send animation change events

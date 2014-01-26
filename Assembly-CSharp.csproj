@@ -48,10 +48,16 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BoulderCreator.cs" />
      <Compile Include="Assets\Scripts\Breakable.cs" />
+<<<<<<< HEAD
+=======
+     <Compile Include="Assets\Scripts\Bullet.cs" />
+     <Compile Include="Assets\Scripts\Button.cs" />
+>>>>>>> cc9406883a3a9a448799c076dd89f5097447e202
      <Compile Include="Assets\Scripts\Camera.cs" />
      <Compile Include="Assets\Scripts\CameraMove.cs" />
      <Compile Include="Assets\Scripts\Current.cs" />
      <Compile Include="Assets\Scripts\Darkness.cs" />
+     <Compile Include="Assets\Scripts\DeathArea.cs" />
      <Compile Include="Assets\Scripts\FragilePlatform.cs" />
      <Compile Include="Assets\Scripts\ItemPickup.cs" />
      <Compile Include="Assets\Scripts\LoadLevels\A1.cs" />
@@ -63,6 +69,7 @@
      <Compile Include="Assets\Scripts\RainArea.cs" />
      <Compile Include="Assets\Scripts\RainDrop.cs" />
      <Compile Include="Assets\Scripts\ShoeHandler.cs" />
+     <Compile Include="Assets\Scripts\Turret.cs" />
      <Compile Include="Assets\Scripts\UI.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
