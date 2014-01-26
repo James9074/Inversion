@@ -8,7 +8,7 @@ public class UI : MonoBehaviour {
 	private int gridXPos = Screen.width/2 - 350; 
 	private int gridYPos = Screen.height/8 -50; 
 	private int gridXSize = 800;
-	private int gridYSize = 30;
+	private int gridYSize = 64;
 	void Start(){
 		//anim = GetComponent<Animator>();
 	}
