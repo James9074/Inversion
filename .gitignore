@@ -4,3 +4,4 @@ Temp/UnityLockfile
 */bin/*
 Temp/
 Library/
+*.rej
