@@ -4,7 +4,6 @@ Temp/UnityLockfile
 */obj/*
 */bin/*
 Temp/
-Library/metaData/
 AssetServerCacheV3
 AssetVersioning.db
 FailedAssetImports.txt
@@ -13,7 +12,6 @@ ScriptMapper
 assetDatabase3
 expandedItems
 guidmapper
-metadata
 *.rej
 obj
 Temp
