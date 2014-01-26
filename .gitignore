@@ -15,4 +15,4 @@ obj
 Temp
 Build
 *.suo
-Library/*
+Library/
