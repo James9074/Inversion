@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class PlayerControl : MonoBehaviour {
 	private const float acceleration = 10f;
@@ -33,7 +34,9 @@ public class PlayerControl : MonoBehaviour {
 		//Check for grounding
 
 		anim.SetInteger("Item", (int) Player.itemEquiped);
-		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+		var colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundRadius);
+        grounded = colliders.Any(c => c.gameObject.name != "Player" && c.gameObject.name != "EffectArea");
+
 		anim.SetBool("Ground", grounded);
 
         UpdateMovement();
