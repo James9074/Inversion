@@ -2,44 +2,61 @@
 using System.Collections;
 using System.Linq;
 
-public class PlayerControl : MonoBehaviour {
-	private const float acceleration = 10f;
+public class PlayerControl : MonoBehaviour
+{
+    private const float acceleration = 10f;
     private const float drag = .25f;
-    private const float gravity = -1f;
     private const float jumpForce = 1500f;
     private float maxVelocityScale = 1f;
 
-	private const float maxVelocity = 20;
-	public Animator anim;
+    private const float maxVelocity = 20;
+    public Animator anim;
 
-	//Falling Setup, check for ground etc
-	bool grounded = false;
-	public Transform groundCheck;
-	float groundRadius = .5f;
-	public LayerMask whatIsGround;
+    private bool prevGravityEnabled;
+    private bool gravityEnabled;
 
-	// Use this for initialization, init the animator to send animation change events
-	void Start () {
-		anim = GetComponent<Animator>();
-	}
+    //Falling Setup, check for ground etc
+    bool grounded = false;
+    public Transform groundCheck;
+    float groundRadius = .5f;
+    public LayerMask whatIsGround;
+
+    // Use this for initialization, init the animator to send animation change events
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+        prevGravityEnabled = gravityEnabled = true;
+    }
 
     void Update()
     {
         maxVelocityScale = (Player.itemEquiped == Items.Windbreaker) ? 2f : 1f;
+
+        gravityEnabled = (Player.itemEquiped != Items.Spacesuit);
+
+        if (prevGravityEnabled != gravityEnabled)
+        {
+            rigidbody2D.gravityScale = (gravityEnabled) ? 1.2f : 0.001f;
+            prevGravityEnabled = gravityEnabled;
+        }
     }
 
-	// Update is called once per frame
-	void FixedUpdate () 
+    // Update is called once per frame
+    void FixedUpdate()
     {
-		//Check for grounding
+        //Check for grounding
 
-		anim.SetInteger("Item", (int) Player.itemEquiped);
-		var colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundRadius);
+        anim.SetInteger("Item", (int)Player.itemEquiped);
+        var colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundRadius);
         grounded = colliders.Any(c => c.gameObject.name != "Player" && c.gameObject.name != "EffectArea");
 
-		anim.SetBool("Ground", grounded);
+        anim.SetBool("Ground", grounded);
 
-        UpdateMovement();
+        if (gravityEnabled)
+        {
+            UpdateMovement();
+        }
+
         anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
         anim.SetFloat("Speed", Mathf.Abs(rigidbody2D.velocity.x));
 
@@ -53,7 +70,7 @@ public class PlayerControl : MonoBehaviour {
         //Add generic death conditions here
 
 
-	}
+    }
 
     void UpdateMovement()
     {
@@ -94,14 +111,14 @@ public class PlayerControl : MonoBehaviour {
     }
 
 
-	void FaceDirection(float direction)
-	{
+    void FaceDirection(float direction)
+    {
         if (direction != 0)
         {
             Vector3 theScale = transform.localScale;
             theScale.x = Mathf.Abs(theScale.x) * direction;
             transform.localScale = theScale;
         }
-	}
+    }
 
 }
