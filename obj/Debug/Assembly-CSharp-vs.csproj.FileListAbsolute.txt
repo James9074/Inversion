@@ -1,0 +1,11 @@
+C:\Users\Eric\Desktop\Inversion\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\Eric\Desktop\Inversion\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\Eric\Desktop\Inversion\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Eric\Desktop\Inversion\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Eric\Desktop\Inversion\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\Eric\Desktop\Inversion\Temp\bin\Debug\nunit.framework.dll
+C:\Users\Eric\Desktop\Inversion\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Eric\Desktop\Inversion\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\Eric\Desktop\Inversion\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
+C:\Users\Eric\Desktop\Inversion\obj\Debug\Assembly-CSharp.dll
+C:\Users\Eric\Desktop\Inversion\obj\Debug\Assembly-CSharp.pdb
