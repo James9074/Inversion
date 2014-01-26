@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\CameraMove.cs" />
      <Compile Include="Assets\Scripts\Current.cs" />
      <Compile Include="Assets\Scripts\Darkness.cs" />
+     <Compile Include="Assets\Scripts\DeathArea.cs" />
      <Compile Include="Assets\Scripts\FragilePlatform.cs" />
      <Compile Include="Assets\Scripts\Gate.cs" />
      <Compile Include="Assets\Scripts\ItemPickup.cs" />
