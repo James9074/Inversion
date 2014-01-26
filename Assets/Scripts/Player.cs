@@ -14,8 +14,10 @@ public class Player : MonoBehaviour {
 	
 	}
 
+
     public void Kill()
     {
+        Debug.Log("hrasdfasdfe");
         Application.LoadLevel(Application.loadedLevel);
     }
 }
