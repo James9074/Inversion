@@ -17,6 +17,8 @@ public class Platform : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+        if (collider2D == null) return;
+
         Vector3 size = (collider2D as BoxCollider2D).size;
         Collider2D[] colliders = Physics2D.OverlapAreaAll(transform.position - size/2, transform.position + size/2);
 
