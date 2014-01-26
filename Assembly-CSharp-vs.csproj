@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Current.cs" />
      <Compile Include="Assets\Scripts\Darkness.cs" />
      <Compile Include="Assets\Scripts\FragilePlatform.cs" />
+     <Compile Include="Assets\Scripts\ItemPickup.cs" />
      <Compile Include="Assets\Scripts\LoadLevels\A1.cs" />
      <Compile Include="Assets\Scripts\Obsticles\Fire.cs" />
      <Compile Include="Assets\Scripts\Platform.cs" />
