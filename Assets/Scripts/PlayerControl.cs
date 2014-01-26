@@ -52,7 +52,7 @@ public class PlayerControl : MonoBehaviour
 
         anim.SetBool("Ground", grounded);
 
-        if (gravityEnabled)
+        if (gravityEnabled || grounded)
         {
             UpdateMovement();
         }
