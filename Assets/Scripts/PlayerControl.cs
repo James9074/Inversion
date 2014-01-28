@@ -15,10 +15,12 @@ public class PlayerControl : MonoBehaviour
     private bool prevGravityEnabled;
     private bool gravityEnabled;
 
+    private float jumpTimer;
+
     //Falling Setup, check for ground etc
     bool grounded = false;
     public Transform groundCheck;
-    float groundRadius = .5f;
+    public float groundRadius = .05f;
     public LayerMask whatIsGround;
 
     // Use this for initialization, init the animator to send animation change events
@@ -48,7 +50,7 @@ public class PlayerControl : MonoBehaviour
 
         anim.SetInteger("Item", (int)Player.itemEquiped);
         var colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundRadius);
-        grounded = colliders.Any(c => c.gameObject.name != "Player" && c.gameObject.name != "EffectArea");
+        grounded = colliders.Any(c => c.gameObject.name != "Player" && c.gameObject.name != "EffectArea") && Mathf.Abs(rigidbody2D.velocity.y) < .001f;
 
         anim.SetBool("Ground", grounded);
 
@@ -60,9 +62,20 @@ public class PlayerControl : MonoBehaviour
         anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
         anim.SetFloat("Speed", Mathf.Abs(rigidbody2D.velocity.x));
 
-        //Jumping
-        if (grounded && Input.GetKeyDown(KeyCode.Space))
+        if (grounded)
         {
+            Debug.DrawLine(transform.position, transform.position + 4 * Vector3.right, Color.green);
+        }
+        else
+        {
+            Debug.DrawLine(transform.position, transform.position + 4 * Vector3.right, Color.red);
+        }
+
+        //Jumping
+        jumpTimer -= Time.deltaTime;
+        if (jumpTimer < 0f && grounded && Input.GetKey(KeyCode.Space))
+        {
+            jumpTimer = .5f;
             anim.SetBool("Ground", false);
             rigidbody2D.AddForce(new Vector2(0, jumpForce));
         }
